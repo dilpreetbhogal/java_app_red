@@ -32,6 +32,7 @@ public class SpringSecurity {
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/addproduct").permitAll()
                                 .requestMatchers("/findallproducts").permitAll()
+                                .requestMatchers("/deleteproduct/{id}").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
                 ).formLogin(
                         form -> form
