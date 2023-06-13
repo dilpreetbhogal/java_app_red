@@ -1,5 +1,6 @@
 package com.example.electronicstore.products;
 
+import com.example.electronicstore.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
