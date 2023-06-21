@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th=" http://www.thymleaf.org">
+<head>
+  Laptops Home Page
+</head>
+<body>
+<table>
+  <thead>
+  <th>Id</th>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Price</th>
+  <th>Add to cart</th>
+  </thead>
+  <tbody>
+  <tr th:if="${laptops.empty}">
+    <td>NO items available</td>
+  </tr>
+  <tr th:each="item: ${laptops}">
+    <td th:text="${item.id}"></td>
+    <td th:text="${item.laptopName}"></td>
+    <td th:text="${item.laptopDescription}"></td>
+    <td th:text="${item.price}"></td>
+    <td><a th:href="@{/add/{id}(id=${item.id})}">Add</a>  </td>
+
+    <!--    <td > <button  type="submit" th:onclick = >Add</button></td>-->
+
+  </tr>
+
+<!--  <tr>-->
+<!--    <td><a th:href="@{/cart}">Go to Cart</a></td>-->
+<!--  </tr>-->
+  </tbody>
+
+
+</table>
+</body>
