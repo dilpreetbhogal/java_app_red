@@ -22,4 +22,9 @@ public class ProductService{
     public List<Product> findAll() {
         return repository.findAll();
     }
+
+    public void deleteProductById(int id){
+        repository.deleteById(id);
+    }
+
 }
