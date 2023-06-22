@@ -10,19 +10,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="products")
-public class Product {
+@Table(name="laptops")
+public class Laptop {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     public int id;
 
     @Column
-    public String productName;
+    public String laptopName;
     @Column
-    public String productDescription;
+    public String laptopDescription;
     @Column
     public int price;
-
-
 }
