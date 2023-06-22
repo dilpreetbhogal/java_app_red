@@ -1,7 +1,6 @@
 package com.example.electronicstore.repository;
 
 import com.example.electronicstore.entity.Sale;
-import com.example.electronicstore.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public class SaleRepository {

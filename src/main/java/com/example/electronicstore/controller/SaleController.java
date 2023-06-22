@@ -29,7 +29,6 @@ public class SaleController {
 
     @DeleteMapping("/{id}")
     public void deleteSale(@PathVariable Long id) {
-
     }
 }
 

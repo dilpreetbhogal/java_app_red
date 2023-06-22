@@ -19,7 +19,6 @@ import java.util.Date;
 
         @Column(nullable = false)
         private double totalAmount;
-
        }
 
 }
