@@ -1,6 +1,5 @@
-package com.example.electronicstore.repository;
+package com.example.electronicstore.sale;
 
-import com.example.electronicstore.entity.Sale;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public class SaleRepository {

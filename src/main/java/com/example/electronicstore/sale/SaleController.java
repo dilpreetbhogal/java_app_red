@@ -1,7 +1,5 @@
-package com.example.electronicstore.controller;
+package com.example.electronicstore.sale;
 
-import com.example.electronicstore.entity.Sale;
-import com.example.electronicstore.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
