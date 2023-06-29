@@ -36,6 +36,8 @@ public class SpringSecurity {
                                 .requestMatchers("/deleteproduct/{id}").permitAll()
                                 .requestMatchers("/findproduct/{id}").permitAll()
                                 .requestMatchers("/updateproduct/{id}").permitAll()
+                                .requestMatchers("/swagger-ui/**").permitAll()
+                                .requestMatchers("/v3/api-docs/**").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
                 ).formLogin(
                         form -> form
