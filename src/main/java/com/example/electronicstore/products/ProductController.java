@@ -1,10 +1,13 @@
 package com.example.electronicstore.products;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,4 +68,36 @@ public class ProductController {
 
         return "Done!";
     }
+
+    @GetMapping("/findproduct/{id}")
+    public ResponseEntity<Product> findProductById(@PathVariable(name = "id") int id) {
+
+        Optional<Product> optionalProduct = service.findById(id);
+        if (optionalProduct.isPresent()) {
+            return ResponseEntity.ok(optionalProduct.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/updateproduct/{id}")
+    public ResponseEntity<Product> deleteProductById(@PathVariable(name = "id") int id, @RequestBody Product updatedProduct){
+        try {
+            Optional<Product> optionalProduct = service.findById(id);
+            if (optionalProduct.isPresent()) {
+                Product product = optionalProduct.get();
+                product.setProductName(updatedProduct.getProductName());
+                product.setProductDescription(updatedProduct.getProductDescription());
+                product.setPrice(updatedProduct.getPrice());
+                service.saveProduct(product);
+                return ResponseEntity.status(HttpStatus.CREATED).body(product);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "Something went wrong in updateProduct: " + e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }
