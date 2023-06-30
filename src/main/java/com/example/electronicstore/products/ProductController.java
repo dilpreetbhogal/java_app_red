@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RestController
+@RequestMapping("/api")
 public class ProductController {
 
     ProductService service;
