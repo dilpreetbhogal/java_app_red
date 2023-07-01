@@ -28,6 +28,5 @@ public class ProductService{
         repository.deleteById(id);
     }
 
-    public Optional<Product> findById(int id) { return repository.findById(id);}
-
+    public Optional<Product> findById(int id) {return repository.findById(id);}
 }
