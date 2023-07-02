@@ -20,32 +20,32 @@ public class SpringSecurity {
     private UserDetailsService userDetailsService;
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
-                                .requestMatchers("/deals").permitAll()
-                                .requestMatchers("/addproduct").permitAll()
-                                .requestMatchers("/findallproducts").permitAll()
-                                .requestMatchers("/deleteproduct/{id}").permitAll()
-                                .requestMatchers("/users").hasRole("ADMIN")
-                ).formLogin(
+                                .requestMatchers("/api/**").permitAll()
+                                .requestMatchers("/products").permitAll()
+                                .requestMatchers("/cart/**").permitAll()
+                                .requestMatchers("/swagger-ui/**").permitAll()
+                                .requestMatchers("/v3/api-docs/**").permitAll()
+                                .requestMatchers("/users").hasRole("ADMIN"))
+                .formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/users")
-                                .permitAll()
-                ).logout(
+                                .defaultSuccessUrl("/index")
+                                .permitAll())
+                .logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .permitAll()
-                );
+                                .permitAll());
         return http.build();
     }
 
