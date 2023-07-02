@@ -22,7 +22,7 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @GetMapping("index")
+    @GetMapping("/index")
     public String home(){
         return "index";
     }
